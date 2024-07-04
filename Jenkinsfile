@@ -3,9 +3,9 @@ pipeline{
         label "slave-1"
     }
     stages {
-        stage('Workspace Cleaning') {
+        stage("Workspace Cleaning") {
             step{
-                cleanWs
+                cleanWs()
             }
         }
     }
