@@ -53,7 +53,7 @@ pipeline{
             steps{
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub-token') {
-                        sh "docker push praveen4712/cicd-pipeline:"
+                        sh "docker push praveen4712/cicd-pipeline:${env.BUILD_TAG}"
                     }
                 }
             }
