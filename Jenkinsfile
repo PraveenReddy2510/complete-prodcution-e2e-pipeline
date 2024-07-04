@@ -41,5 +41,13 @@ pipeline{
                 waitForQualityGate abortPipeline: false, credentialsId: 'sonar'
             }
         }
+        stage("Docker Build and Push") {
+            steps{
+                withDockerRegistry(credentialsId: 'dockerhub-token') {
+                    sh "docker build -t praveen4712/cicd-pipeline:1.0 ."
+                    sh "docker push"
+                }
+            }
+        }
     }
 }
