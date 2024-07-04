@@ -43,7 +43,7 @@ pipeline{
         }
         stage("Docker Build and Push") {
             steps{
-                withDockerRegistry(credentialsId: 'dockerhub-token') {
+                withDockerRegistry(credentialsId: 'dockerhub-token', url: 'https://hub.docker.com/') {
                     sh "docker build -t praveen4712/cicd-pipeline:1.0 ."
                     sh "docker push"
                 }
