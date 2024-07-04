@@ -3,7 +3,8 @@ pipeline{
         label "slave"
     }
     tools{
-        maven ""
+        maven "mvn3"
+        java "jdk11"
     }
     stages {
         stage("Workspace Cleaning") {
