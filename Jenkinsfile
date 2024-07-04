@@ -45,7 +45,7 @@ pipeline{
         stage("Docker Build") {
             steps{
                 script {
-                    sh "docker build -t praveen4712/cicd-pipeline:1.0 ."
+                    sh "docker build -t praveen4712/cicd-pipeline:${env.BUILD_TAG} ."
                 }
             }
         }
