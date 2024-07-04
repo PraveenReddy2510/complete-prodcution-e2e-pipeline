@@ -10,7 +10,7 @@ pipeline{
         }
         stage("Git Checkout") {
             steps{
-                git branch: "main", credentialsID: "github", url: "https://github.com/PraveenReddy2510/complete-prodcution-e2e-pipeline.git"
+                git branch: "main", credentialsId: "github", url: "https://github.com/PraveenReddy2510/complete-prodcution-e2e-pipeline.git"
             }
         }
     }
