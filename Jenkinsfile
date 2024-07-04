@@ -5,7 +5,7 @@ pipeline{
     tools{
         maven "mvn3"
         jdk "jdk17"
-        dockerTool "docker2"
+        dockerTool "docker"
     }
     stages {
         stage("Workspace Cleaning") {
