@@ -29,11 +29,10 @@ pipeline{
         }
         stage("Static Code Analysis by SonarQube") {
             steps{
-                environment {
-                    scannerHome = tool 'SonarQube-Server'
-                }
-                withSonarQubeEnv(credentialsId: 'sonar') {
-                    sh "mvn sonar:sonar"
+                script {
+                    withSonarQubeEnv(credentialsId: 'sonar') {
+                        sh "mvn sonar:sonar"
+                    }
                 }
             }
         }
