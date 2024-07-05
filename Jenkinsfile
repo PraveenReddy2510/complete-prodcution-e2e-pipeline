@@ -8,6 +8,7 @@ pipeline{
     }
     environment{
         TAG = '1.0.' + '${BUILD_NUMBER}'
+        GITHUB_CREDENTIALS = credentials('github')
     }
     stages {
         stage("Git Checkout") {
@@ -68,6 +69,8 @@ pipeline{
                     
                     git add deployment.yaml
                     git commit -m "Update deployment image to with latest image"
+
+                    git remote set-url origin https://${GITHUB_CREDENTIALS_USR}:${GITHUB_CREDENTIALS_PSW}@github.com/PraveenReddy2510/complete-prodcution-e2e-pipeline-2.git
                     git push origin main
                     """
                 }
