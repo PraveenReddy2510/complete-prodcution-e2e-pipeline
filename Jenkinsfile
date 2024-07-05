@@ -60,7 +60,7 @@ pipeline{
                 script {
                     sh """
                     git clone https://github.com/PraveenReddy2510/complete-prodcution-e2e-pipeline-2.git
-                    cd CI-CD_Pipeline-1
+                    cd complete-prodcution-e2e-pipeline-2/CI-CD_Pipeline-1
                     git config user.email "rpravee4712@gmail.com"
                     git config user.name "Praveen"
                     
