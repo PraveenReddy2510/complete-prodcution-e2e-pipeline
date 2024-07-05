@@ -10,7 +10,7 @@ pipeline{
         TAG = '1.0.' + '${BUILD_NUMBER}'
     }
     stages {
-                stage("Git Checkout") {
+        stage("Git Checkout") {
             steps{
                 git branch: "main", credentialsId: "github", url: "https://github.com/PraveenReddy2510/complete-prodcution-e2e-pipeline.git"
             }
@@ -27,10 +27,11 @@ pipeline{
         }
         stage("Static Code Analysis by SonarQube") {
             steps{
-                script {
-                    withSonarQubeEnv(credentialsId: 'sonar') {
-                        sh "mvn sonar:sonar"
-                    }
+                environment{
+                    scannerHome = tool name: 'SonarQube Scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                }
+                withSonarQubeEnv(credentialsId: 'sonar') {
+                    sh "mvn sonar:sonar"
                 }
             }
         }
