@@ -5,7 +5,9 @@ pipeline{
     tools{
         maven "mvn3"
         jdk "jdk17"
-        dockerTool "docker"
+    }
+    environment{
+        TAG = '1.0.' + '${BUILD_NUMBER}'
     }
     stages {
         stage("Workspace Cleaning") {
@@ -45,7 +47,7 @@ pipeline{
         stage("Docker Build") {
             steps{
                 script {
-                    sh "docker build -t praveen4712/cicd-pipeline:${env.BUILD_TAG} ."
+                    sh "docker build -t praveen4712/cicd-pipeline:${env.TAG} ."
                 }
             }
         }
@@ -53,7 +55,7 @@ pipeline{
             steps{
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub-token') {
-                        sh "docker push praveen4712/cicd-pipeline:${env.BUILD_TAG}"
+                        sh "docker push praveen4712/cicd-pipeline:${env.TAG}"
                     }
                 }
             }
