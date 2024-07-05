@@ -10,7 +10,7 @@ pipeline{
         TAG = '1.0.' + '${BUILD_NUMBER}'
     }
     stages {
-                stage("Git Checkout") {
+        stage("Git Checkout") {
             steps{
                 git branch: "main", credentialsId: "github", url: "https://github.com/PraveenReddy2510/complete-prodcution-e2e-pipeline.git"
             }
@@ -61,10 +61,10 @@ pipeline{
                     sh """
                     git clone https://github.com/PraveenReddy2510/complete-prodcution-e2e-pipeline-2.git
                     cd CI-CD_Pipeline-1
-                    git config user.email "rpraveen4712@gmail.com"
+                    git config user.email "rpravee4712@gmail.com"
                     git config user.name "Praveen"
                     
-                    sed -i 's|image: .*|image: ${FULL_IMAGE_NAME}|g' deployment.yaml
+                    sed -i 's|image: praveen4712/cicd-pipeline:rathan|image: praveen4712/cicd-pipeline:${env.TAG}|g' deployment.yaml
                     
                     git add deployment.yaml
                     git commit -m "Update deployment image to with latest image"
